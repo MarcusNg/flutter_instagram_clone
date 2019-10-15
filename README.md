@@ -7,3 +7,5 @@
 [Episode 3: Bottom Navigation Bar](https://youtu.be/avF_C7YT628)
 
 [Episode 4: User Profile (Part 1)](https://youtu.be/cER22CqVZE8)
+
+[Episode 5: User Profile (Part 2)](https://youtu.be/G5lDugVd8n0)
