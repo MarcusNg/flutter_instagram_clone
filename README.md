@@ -9,3 +9,5 @@
 [Episode 4: User Profile (Part 1)](https://youtu.be/cER22CqVZE8)
 
 [Episode 5: User Profile (Part 2)](https://youtu.be/G5lDugVd8n0)
+
+[Episode 6: Search Users and Provider](https://youtu.be/uqm-QlsQVZ8)
