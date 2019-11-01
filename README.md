@@ -11,3 +11,5 @@
 [Episode 5: User Profile (Part 2)](https://youtu.be/G5lDugVd8n0)
 
 [Episode 6: Search Users and Provider](https://youtu.be/Q_xzJn332Zo)
+
+[Episode 7: Create Posts](https://youtu.be/FpGxv_qpksI)
