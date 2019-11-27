@@ -12,6 +12,8 @@
 
 [Episode 6: Search Users and Provider](https://youtu.be/Q_xzJn332Zo)
 
-[Episode 7: Create Posts](https://youtu.be/FpGxv_qpksI)
+[Episode 7: Create Posts and Image Cropper](https://youtu.be/FpGxv_qpksI)
 
 [Episode 8: Follow and Unfollow Users](https://youtu.be/ugXjgWARxfU)
+
+[Episode 9: Cloud Functions](https://youtu.be/7K7dkE-sxV4)
