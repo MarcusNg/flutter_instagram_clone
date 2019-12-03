@@ -16,4 +16,6 @@
 
 [Episode 8: Follow and Unfollow Users](https://youtu.be/ugXjgWARxfU)
 
-[Episode 9: Cloud Functions](https://youtu.be/7K7dkE-sxV4)
+[Episode 9: Firestore Cloud Functions](https://youtu.be/7K7dkE-sxV4)
+
+[Episode 10: Displaying Posts](https://youtu.be/4fb12QIcIYM)

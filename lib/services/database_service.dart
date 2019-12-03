@@ -93,4 +93,23 @@ class DatabaseService {
         .getDocuments();
     return followersSnapshot.documents.length;
   }
+
+  static Future<List<Post>> getFeedPosts(String userId) async {
+    QuerySnapshot feedSnapshot = await feedsRef
+        .document(userId)
+        .collection('userFeed')
+        .orderBy('timestamp', descending: true)
+        .getDocuments();
+    List<Post> posts =
+        feedSnapshot.documents.map((doc) => Post.fromDoc(doc)).toList();
+    return posts;
+  }
+
+  static Future<User> getUserWithId(String userId) async {
+    DocumentSnapshot userDocSnapshot = await usersRef.document(userId).get();
+    if (userDocSnapshot.exists) {
+      return User.fromDoc(userDocSnapshot);
+    }
+    return User();
+  }
 }
