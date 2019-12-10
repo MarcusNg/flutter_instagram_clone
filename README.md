@@ -19,3 +19,5 @@
 [Episode 9: Firestore Cloud Functions](https://youtu.be/7K7dkE-sxV4)
 
 [Episode 10: Displaying Posts](https://youtu.be/4fb12QIcIYM)
+
+[Episode 11: User Profile Posts Grid + List](https://youtu.be/vQX63VZ5Aok)
