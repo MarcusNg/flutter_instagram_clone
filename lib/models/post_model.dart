@@ -4,7 +4,7 @@ class Post {
   final String id;
   final String imageUrl;
   final String caption;
-  final dynamic likes;
+  final int likeCount;
   final String authorId;
   final Timestamp timestamp;
 
@@ -12,7 +12,7 @@ class Post {
     this.id,
     this.imageUrl,
     this.caption,
-    this.likes,
+    this.likeCount,
     this.authorId,
     this.timestamp,
   });
@@ -22,7 +22,7 @@ class Post {
       id: doc.documentID,
       imageUrl: doc['imageUrl'],
       caption: doc['caption'],
-      likes: doc['likes'],
+      likeCount: doc['likeCount'],
       authorId: doc['authorId'],
       timestamp: doc['timestamp'],
     );

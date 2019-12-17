@@ -21,3 +21,5 @@
 [Episode 10: Displaying Posts](https://youtu.be/4fb12QIcIYM)
 
 [Episode 11: User Profile Posts Grid + List](https://youtu.be/vQX63VZ5Aok)
+
+[Episode 12: Liking Posts](https://youtu.be/XPTzTkxXdJg)
