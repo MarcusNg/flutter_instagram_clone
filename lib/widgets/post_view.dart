@@ -5,6 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_instagram_clone/models/post_model.dart';
 import 'package:flutter_instagram_clone/models/user_model.dart';
+import 'package:flutter_instagram_clone/screens/comments_screen.dart';
 import 'package:flutter_instagram_clone/screens/profile_screen.dart';
 import 'package:flutter_instagram_clone/services/database_service.dart';
 
@@ -170,7 +171,15 @@ class _PostViewState extends State<PostView> {
                   IconButton(
                     icon: Icon(Icons.comment),
                     iconSize: 30.0,
-                    onPressed: () {},
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => CommentsScreen(
+                          postId: widget.post.id,
+                          likeCount: _likeCount,
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),

@@ -10,6 +10,8 @@ import 'package:flutter_instagram_clone/utilities/constants.dart';
 import 'package:flutter_instagram_clone/widgets/post_view.dart';
 import 'package:provider/provider.dart';
 
+import 'comments_screen.dart';
+
 class ProfileScreen extends StatefulWidget {
   final String currentUserId;
   final String userId;
@@ -273,9 +275,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   _buildTilePost(Post post) {
     return GridTile(
-      child: Image(
-        image: CachedNetworkImageProvider(post.imageUrl),
-        fit: BoxFit.cover,
+      child: GestureDetector(
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => CommentsScreen(
+              postId: post.id,
+              likeCount: post.likeCount,
+            ),
+          ),
+        ),
+        child: Image(
+          image: CachedNetworkImageProvider(post.imageUrl),
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

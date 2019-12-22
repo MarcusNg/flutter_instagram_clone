@@ -23,3 +23,5 @@
 [Episode 11: User Profile Posts Grid + List](https://youtu.be/vQX63VZ5Aok)
 
 [Episode 12: Liking Posts](https://youtu.be/XPTzTkxXdJg)
+
+[Episode 13: Post Comments](https://youtu.be/Z6WYqA4j2oo)

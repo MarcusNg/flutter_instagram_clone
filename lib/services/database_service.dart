@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_instagram_clone/models/comment_model.dart';
 import 'package:flutter_instagram_clone/models/post_model.dart';
 import 'package:flutter_instagram_clone/models/user_model.dart';
 import 'package:flutter_instagram_clone/utilities/constants.dart';
@@ -169,4 +170,14 @@ class DatabaseService {
         .get();
     return userDoc.exists;
   }
+
+  static void commentOnPost(
+      {String currentUserId, String postId, String comment}) {
+    commentsRef.document(postId).collection('postComments').add({
+      'content': comment,
+      'authorId': currentUserId,
+      'timestamp': Timestamp.fromDate(DateTime.now()),
+    });
+  }
+  
 }

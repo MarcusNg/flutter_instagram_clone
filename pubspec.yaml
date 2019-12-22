@@ -36,6 +36,7 @@ dependencies:
   provider: ^3.2.0
   image_cropper: ^1.1.0
   animator: ^1.0.0+3
+  intl: ^0.16.0
 
 dev_dependencies:
   flutter_test:
