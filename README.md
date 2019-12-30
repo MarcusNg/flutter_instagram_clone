@@ -1,4 +1,6 @@
-# Flutter Firebase Instagram Clone
+# Flutter Firebase Instagram Tutorial
+
+[Complete Playlist](https://www.youtube.com/playlist?list=PLzOt3noWLMtgHRNVd1w20L_FW3ZS9BB6i)
 
 [Episode 1: Login and Signup Page UI](https://youtu.be/PJr2kWgXf8s)
 
@@ -25,3 +27,5 @@
 [Episode 12: Liking Posts](https://youtu.be/XPTzTkxXdJg)
 
 [Episode 13: Post Comments](https://youtu.be/Z6WYqA4j2oo)
+
+[Episode 14: Activity Feed](https://youtu.be/dSJCDLfTYns)

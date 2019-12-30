@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_instagram_clone/models/activity_model.dart';
 import 'package:flutter_instagram_clone/models/comment_model.dart';
 import 'package:flutter_instagram_clone/models/post_model.dart';
 import 'package:flutter_instagram_clone/models/user_model.dart';
@@ -138,6 +139,7 @@ class DatabaseService {
           .collection('postLikes')
           .document(currentUserId)
           .setData({});
+      addActivityItem(currentUserId: currentUserId, post: post, comment: null);
     });
   }
 
@@ -172,12 +174,47 @@ class DatabaseService {
   }
 
   static void commentOnPost(
-      {String currentUserId, String postId, String comment}) {
-    commentsRef.document(postId).collection('postComments').add({
+      {String currentUserId, Post post, String comment}) {
+    commentsRef.document(post.id).collection('postComments').add({
       'content': comment,
       'authorId': currentUserId,
       'timestamp': Timestamp.fromDate(DateTime.now()),
     });
+    addActivityItem(currentUserId: currentUserId, post: post, comment: comment);
   }
-  
+
+  static void addActivityItem(
+      {String currentUserId, Post post, String comment}) {
+    if (currentUserId != post.authorId) {
+      activitiesRef.document(post.authorId).collection('userActivities').add({
+        'fromUserId': currentUserId,
+        'postId': post.id,
+        'postImageUrl': post.imageUrl,
+        'comment': comment,
+        'timestamp': Timestamp.fromDate(DateTime.now()),
+      });
+    }
+  }
+
+  static Future<List<Activity>> getActivities(String userId) async {
+    QuerySnapshot userActivitiesSnapshot = await activitiesRef
+        .document(userId)
+        .collection('userActivities')
+        .orderBy('timestamp', descending: true)
+        .getDocuments();
+    List<Activity> activity = userActivitiesSnapshot.documents
+        .map((doc) => Activity.fromDoc(doc))
+        .toList();
+    return activity;
+  }
+
+  static Future<Post> getUserPost(String userId, String postId) async {
+    DocumentSnapshot postDocSnapshot = await postsRef
+        .document(userId)
+        .collection('userPosts')
+        .document(postId)
+        .get();
+    return Post.fromDoc(postDocSnapshot);
+  }
+
 }
