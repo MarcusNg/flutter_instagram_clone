@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_instagram_clone/models/activity_model.dart';
-import 'package:flutter_instagram_clone/models/comment_model.dart';
 import 'package:flutter_instagram_clone/models/post_model.dart';
 import 'package:flutter_instagram_clone/models/user_model.dart';
 import 'package:flutter_instagram_clone/utilities/constants.dart';

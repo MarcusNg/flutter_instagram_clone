@@ -118,6 +118,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 MaterialPageRoute(
                   builder: (_) => EditProfileScreen(
                     user: user,
+                    updateUser: (User updateUser) {
+                      // Trigger state rebuild after editing profile
+                      User updatedUser = User(
+                        id: updateUser.id,
+                        name: updateUser.name,
+                        email: user.email,
+                        profileImageUrl: updateUser.profileImageUrl,
+                        bio: updateUser.bio,
+                      );
+                      setState(() => _profileUser = updatedUser);
+                    },
                   ),
                 ),
               ),
