@@ -15,20 +15,22 @@ class FeedScreen extends StatefulWidget {
 }
 
 class _FeedScreenState extends State<FeedScreen> {
-  List<Post> _posts = [];
+  /// SETUP FEED is unnecessary because we switched it from a FutureBuilder to a StreamBuilder
 
-  @override
-  void initState() {
-    super.initState();
-    _setupFeed();
-  }
+  // List<Post> _posts = [];
 
-  _setupFeed() async {
-    List<Post> posts = await DatabaseService.getFeedPosts(widget.currentUserId);
-    setState(() {
-      _posts = posts;
-    });
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _setupFeed();
+  // }
+
+  // _setupFeed() async {
+  //   List<Post> posts = await DatabaseService.getFeedPosts(widget.currentUserId);
+  //   setState(() {
+  //     _posts = posts;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -44,28 +46,34 @@ class _FeedScreenState extends State<FeedScreen> {
           ),
         ),
       ),
-      body: RefreshIndicator(
-        onRefresh: () => _setupFeed(),
-        child: ListView.builder(
-          itemCount: _posts.length,
-          itemBuilder: (BuildContext context, int index) {
-            Post post = _posts[index];
-            return FutureBuilder(
-              future: DatabaseService.getUserWithId(post.authorId),
-              builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if (!snapshot.hasData) {
-                  return SizedBox.shrink();
-                }
-                User author = snapshot.data;
-                return PostView(
-                  currentUserId: widget.currentUserId,
-                  post: post,
-                  author: author,
-                );
-              },
-            );
-          },
-        ),
+      body: StreamBuilder(
+        stream: DatabaseService.getFeedPosts(widget.currentUserId),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (!snapshot.hasData) {
+            return SizedBox.shrink();
+          }
+          final List<Post> posts = snapshot.data;
+          return ListView.builder(
+            itemCount: posts.length,
+            itemBuilder: (BuildContext context, int index) {
+              Post post = posts[index];
+              return FutureBuilder(
+                future: DatabaseService.getUserWithId(post.authorId),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  if (!snapshot.hasData) {
+                    return SizedBox.shrink();
+                  }
+                  User author = snapshot.data;
+                  return PostView(
+                    currentUserId: widget.currentUserId,
+                    post: post,
+                    author: author,
+                  );
+                },
+              );
+            },
+          );
+        },
       ),
     );
   }

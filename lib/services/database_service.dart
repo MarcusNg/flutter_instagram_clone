@@ -95,15 +95,14 @@ class DatabaseService {
     return followersSnapshot.documents.length;
   }
 
-  static Future<List<Post>> getFeedPosts(String userId) async {
-    QuerySnapshot feedSnapshot = await feedsRef
+  static Stream<List<Post>> getFeedPosts(String userId) {
+    return feedsRef
         .document(userId)
         .collection('userFeed')
         .orderBy('timestamp', descending: true)
-        .getDocuments();
-    List<Post> posts =
-        feedSnapshot.documents.map((doc) => Post.fromDoc(doc)).toList();
-    return posts;
+        .snapshots()
+        .map((snapshot) =>
+            snapshot.documents.map((doc) => Post.fromDoc(doc)).toList());
   }
 
   static Future<List<Post>> getUserPosts(String userId) async {
@@ -172,8 +171,7 @@ class DatabaseService {
     return userDoc.exists;
   }
 
-  static void commentOnPost(
-      {String currentUserId, Post post, String comment}) {
+  static void commentOnPost({String currentUserId, Post post, String comment}) {
     commentsRef.document(post.id).collection('postComments').add({
       'content': comment,
       'authorId': currentUserId,
@@ -215,5 +213,4 @@ class DatabaseService {
         .get();
     return Post.fromDoc(postDocSnapshot);
   }
-
 }
